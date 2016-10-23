@@ -1,6 +1,5 @@
 {
-    "name": "pixelant/frontend-editing",
-{
+    "name": "t3kit/t3kit-docker",
     "description": "Docker setup for t3kit",
     "license": ["GPL-2.0+"],
     "keywords": ["TYPO3 CMS", "Docker", "t3kit"],
