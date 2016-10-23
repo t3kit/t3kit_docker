@@ -1,0 +1,11 @@
+{
+    "name": "pixelant/frontend-editing",
+{
+    "description": "Docker setup for t3kit",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "Docker", "t3kit"],
+    "require": {
+        "php": ">=7.0"
+    }
+}
+
