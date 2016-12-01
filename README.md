@@ -34,6 +34,46 @@ The parameter `-d` will keep it running in the background as process.
 
 On the first run the DockerT3kit creates the database and creates sample data to it.
 
+It might be not work because it does not have `bin/` folder
+
+## Solutions
+
+Follow this below command to make your docker work:
+
+    composer require --dev lauri/dockert3kit '~2.2.2'
+    vendor/bin/dockert3kit up -d
+
+## Make your website work with `style`
+
+As t3kit use website layout style form `them_t3kit` and `theme_t3kit_bluemountain `
+
+    cd ~/path_to_your_project/shared/local.your-site-name/typo3conf/ext/theme_t3kit
+    git submodule init
+    git submodule update
+    
+Go to `theme_t3kit_bluemountain`
+
+    cd ~/path_to_your_project/shared/local.your-site-name/typo3conf/ext/theme_t3kit_bluemountain
+    git submodule init
+    git submodule update
+    
+## Enable `Install Tool`
+
+After you finish styling you can go to enable `install tool` to clear cache and others stuff
+
+    local.your-site-name/typo3/sysext/install/Start/Install.php
+    
+After that you will be able to create file call `ENABLE_INSTALL_TOOL` in your `typo3conf/` folder
+Go to refresh your url it will tell you to login. If you do not know the password, you can follow this solution below:
+It will generate the hash code. Example `$P$CFf7L8v6NduZTuMRfvPZVHdDqeJDTG1`
+
+    cd ~/path_to_your_project/shared/local.your-site-name/typo3conf
+    vim LocalConfiguration.php
+    'installToolPassword' => 'put your hash code generate by install tool',
+
+Go to refresh the page again and login by default password `123456789`
+Go to clear cache. Then refresh your website.
+    
 ## Access project url when inside `app` container
 
 As of current docker doesn't support bi-directional link, you cannot access web container from app container.
