@@ -28,20 +28,12 @@ using that port. Usually this happens if you have apache or nginx installed in y
 To get Docker container up and running:
 
     cd ~/path_to_your_project/shared/local.your-site-name
+    composer require --dev lauri/dockert3kit '~2.2.2'
     vendor/bin/dockert3kit up -d
-
+    
 The parameter `-d` will keep it running in the background as process.
 
 On the first run the DockerT3kit creates the database and creates sample data to it.
-
-It might be not work because it does not have `bin/` folder
-
-## Solutions
-
-Follow this below command to make your docker work:
-
-    composer require --dev lauri/dockert3kit '~2.2.2'
-    vendor/bin/dockert3kit up -d
 
 ## Make your website work with `style`
 
@@ -111,6 +103,29 @@ This will show the running containers.
     vendor/bin/dockert3kit run SERVICE /bin/bash
 
 SERVICE can currently be `app`, `web`, `data`, `db` or `solr`.
+
+## User Acceptance Test
+
+First start selenium server on your host machine (just run `selenium` in another tab of your terminal)
+
+Running tests manually inside docker
+------------------------------------
+
+Make sure that you ssh into the docker app container
+
+	cd ~/path_to_your_project/shared/local.your-site-name
+	vendor/bin/dockert3kit run app /bin/bash
+
+Run the tests:
+
+	bin/behat -c test/behaviour/behat.yml --strict --suite=default
+
+Run test with specific name
+
+	bin/behat -c test/behaviour/behat.yml --strict --suite=default --name="Homepage"
+
+You need to make sure that your local setup is working which means that you can access the site
+<http://local.your-site-name/> in your browser.
 
 ## Requirements
 
