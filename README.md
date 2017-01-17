@@ -15,13 +15,15 @@ Init script will ask you for the site folder name which will be also used as the
 For example, if you name your site `local.your-site-name` Your TYPO3 installation will be located in 
 `~/path_to_your_project/shared/local.your-site-name` and can be accessed from `http://local.your-site-name/` domain.
 
-## Good to know:
+## Good to know (known problems):
 
 DockerT3kit uses port 80 for web access so you need to make sure that your host machine does not have any software
 using that port. Usually this happens if you have apache or nginx installed in your host machine, so you can stop it with:
 
     sudo service apache2 stop
     sudo service nginx stop
+
+If the Apache runs locally it binds the port and Docker will be blocked. If upu need to run the Apache at the same time there is a need to fork the dockert3kit repo and add another port to docker-compose file to expose web container.
 
 ## Starting Docker containers
 
