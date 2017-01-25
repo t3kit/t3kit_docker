@@ -23,16 +23,16 @@ using that port. Usually this happens if you have apache or nginx installed in y
     sudo service apache2 stop
     sudo service nginx stop
 
-If the Apache runs locally it binds the port and Docker will be blocked. If upu need to run the Apache at the same time there is a need to fork the dockert3kit repo and add another port to docker-compose file to expose web container.
+If the Apache runs locally it binds the port and Docker will be blocked. If you need to run the Apache at the same time there is a need to fork the dockert3kit repo and add another port to docker-compose file to expose web container.
 
 ## Starting Docker containers
 
 To get Docker container up and running:
 
     cd ~/path_to_your_project/shared/local.your-site-name
-    composer require --dev lauri/dockert3kit '~2.2.2'
+    composer require --dev lauri/dockert3kit '~3.0.1'
     vendor/bin/dockert3kit up -d
-    
+
 The parameter `-d` will keep it running in the background as process.
 
 On the first run the DockerT3kit creates the database and creates sample data to it.
@@ -44,13 +44,13 @@ As t3kit use website layout style form `them_t3kit` and `theme_t3kit_bluemountai
     cd ~/path_to_your_project/shared/local.your-site-name/typo3conf/ext/theme_t3kit
     git submodule init
     git submodule update
-    
+
 Go to `theme_t3kit_bluemountain`
 
     cd ~/path_to_your_project/shared/local.your-site-name/typo3conf/ext/theme_t3kit_bluemountain
     git submodule init
     git submodule update
-    
+
 ## Enable `Install Tool`
 
 After you finish styling you can go to enable `install tool` to clear cache and others stuff
@@ -65,9 +65,11 @@ It will generate the hash code. Example `$P$CFf7L8v6NduZTuMRfvPZVHdDqeJDTG1`
     vim LocalConfiguration.php
     'installToolPassword' => 'put your hash code generate by install tool',
 
-Go to refresh the page again and login by default password `123456789`
-Go to clear cache. Then refresh your website.
-    
+* Go to refresh the page again and login by default password `123456789`
+* Go to compare database to execute the update scripts.
+* Go to fix folder structure
+* Go to clear cache. Then refresh your website.
+
 ## Access project url when inside `app` container
 
 As of current docker doesn't support bi-directional link, you cannot access web container from app container.
